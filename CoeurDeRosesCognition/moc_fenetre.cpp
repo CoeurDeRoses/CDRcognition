@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Fenetre_t {
-    QByteArrayData data[15];
-    char stringdata0[119];
+    QByteArrayData data[14];
+    char stringdata0[117];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -41,16 +41,15 @@ QT_MOC_LITERAL(6, 52, 6), // "Verif2"
 QT_MOC_LITERAL(7, 59, 6), // "Verif3"
 QT_MOC_LITERAL(8, 66, 6), // "Verif4"
 QT_MOC_LITERAL(9, 73, 7), // "Effacer"
-QT_MOC_LITERAL(10, 81, 1), // "a"
-QT_MOC_LITERAL(11, 83, 8), // "Initial1"
-QT_MOC_LITERAL(12, 92, 8), // "Initial2"
-QT_MOC_LITERAL(13, 101, 8), // "Initial3"
-QT_MOC_LITERAL(14, 110, 8) // "Initial4"
+QT_MOC_LITERAL(10, 81, 8), // "Initial1"
+QT_MOC_LITERAL(11, 90, 8), // "Initial2"
+QT_MOC_LITERAL(12, 99, 8), // "Initial3"
+QT_MOC_LITERAL(13, 108, 8) // "Initial4"
 
     },
     "Fenetre\0Commencer\0\0Arreter\0SecondesActuelles\0"
     "Verif1\0Verif2\0Verif3\0Verif4\0Effacer\0"
-    "a\0Initial1\0Initial2\0Initial3\0Initial4"
+    "Initial1\0Initial2\0Initial3\0Initial4"
 };
 #undef QT_MOC_LITERAL
 
@@ -75,11 +74,11 @@ static const uint qt_meta_data_Fenetre[] = {
        6,    0,   78,    2, 0x0a /* Public */,
        7,    0,   79,    2, 0x0a /* Public */,
        8,    0,   80,    2, 0x0a /* Public */,
-       9,    1,   81,    2, 0x0a /* Public */,
-      11,    0,   84,    2, 0x0a /* Public */,
-      12,    0,   85,    2, 0x0a /* Public */,
-      13,    0,   86,    2, 0x0a /* Public */,
-      14,    0,   87,    2, 0x0a /* Public */,
+       9,    0,   81,    2, 0x0a /* Public */,
+      10,    0,   82,    2, 0x0a /* Public */,
+      11,    0,   83,    2, 0x0a /* Public */,
+      12,    0,   84,    2, 0x0a /* Public */,
+      13,    0,   85,    2, 0x0a /* Public */,
 
  // slots: parameters
     QMetaType::Void,
@@ -89,7 +88,7 @@ static const uint qt_meta_data_Fenetre[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Int,   10,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -111,7 +110,7 @@ void Fenetre::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
         case 4: _t->Verif2(); break;
         case 5: _t->Verif3(); break;
         case 6: _t->Verif4(); break;
-        case 7: _t->Effacer((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 7: _t->Effacer(); break;
         case 8: _t->Initial1(); break;
         case 9: _t->Initial2(); break;
         case 10: _t->Initial3(); break;
@@ -119,6 +118,7 @@ void Fenetre::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
         default: ;
         }
     }
+    Q_UNUSED(_a);
 }
 
 QT_INIT_METAOBJECT const QMetaObject Fenetre::staticMetaObject = {

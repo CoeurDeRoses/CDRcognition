@@ -28,7 +28,7 @@ public slots:
       void Verif2();
       void Verif3();
       void Verif4();
-      void Effacer(int a);//Pour une remise à 0 après un nouvelle partie ou un arrêt
+      void Effacer();//Pour une remise à 0 après un nouvelle partie ou un arrêt
 
       //méthodes servant à réinitialiser les calculs
       void Initial1();

@@ -83,9 +83,10 @@ void Fenetre::Commencer()
 void Fenetre::Initial1()
 {
     //Préparation calcul 1
-
-    this->operande1A = rand() % 12; // Dernier nombre exclusif, 11 ext le maximum
-    this->operande1B = rand() % 12;
+    ui->txtReponse1->setPlainText("");// Vider la fenêtre après la réponse trouvé
+                //ou la réinitialisation de l'exercice
+    this->operande1A = rand() % 13; // Dernier nombre exclusif, 12 ext le maximum
+    this->operande1B = rand() % 13;
 
     this->resultat1 = this->operande1A * this->operande1B;
 
@@ -95,9 +96,10 @@ void Fenetre::Initial1()
 }
 void Fenetre::Initial2()
 {
+    ui->txtReponse2->setPlainText("");
     //Préparation calcul 2
-    this->operande2A = rand() % 12;
-    this->operande2B = rand() % 12;
+    this->operande2A = rand() % 13;
+    this->operande2B = rand() % 13;
 
     this->resultat2 = this->operande2A * this->operande2B;
 
@@ -106,9 +108,10 @@ void Fenetre::Initial2()
 }
 void Fenetre::Initial3()
 {
+    ui->txtReponse3->setPlainText("");
     //Préparation calcul 3
-    this->operande3A = rand() % 12; // Dernier nombre exclusif, 11 ext le maximum
-    this->operande4B = rand() % 12;
+    this->operande3A = rand() % 13; // Dernier nombre exclusif, 12 est le maximum
+    this->operande4B = rand() % 13;
 
     this->resultat3 = this->operande3A * this->operande3B;
 
@@ -118,9 +121,10 @@ void Fenetre::Initial3()
 }
 void Fenetre::Initial4()
 {
+    ui->txtReponse4->setPlainText("");
     //Préparation calcul 4
-    this->operande4A = rand() % 12; // Dernier nombre exclusif, 11 ext le maximum
-    this->operande4B = rand() % 12;
+    this->operande4A = rand() % 13; // Dernier nombre exclusif, 12 est le maximum
+    this->operande4B = rand() % 13;
 
     this->resultat4 = this->operande4A * this->operande4B;
 
@@ -130,14 +134,14 @@ void Fenetre::Initial4()
 
 void Fenetre::Arreter()
 {
-    this->Effacer(0);
+    this->Effacer();
     ui->btArreter->setDisabled(true);
     ui->btCommencer->setEnabled(true);
 }
 
 void Fenetre::SecondesActuelles()
 {
-    this->Effacer(1);// Toujours à appeler au début pour une remise à zero
+    //this->Effacer();// Toujours à appeler au début pour une remise à zero
     //en cas de nouvelles partie
 
     secondes_restantes1--;
@@ -161,6 +165,13 @@ void Fenetre::SecondesActuelles()
         this->compteur2->stop();
         this->compteur3->stop();
         this->compteur4->stop();
+
+        this->Effacer();
+
+        ui->btArreter->setEnabled(false);//Le desactivé
+        //car inutile d'arrêter une partie déja terminé :)
+
+        ui->btCommencer->setEnabled(true);
 
         ui->lbFin->setText("C'est terminé.");
     }
@@ -267,18 +278,20 @@ void Fenetre:: Verif4()
     }
 }
 
-void Fenetre:: Effacer(int a)
+
+void Fenetre:: Effacer()
 {
-    if(a==0)//Pour ne pas stoper le compteur lors du nouvelles partie
-        // A l'appel de la méthode Effacer() dans la méthode Commencer() au début
-        // Car les compteurs sont lancés après avoir appuyer sur le bouton commencer
-        // Dans le constructeur Fenetre et laisser les calcul affichés
-    {
+
 
     this->compteur1->stop();
     this->compteur2->stop();
     this->compteur3->stop();
     this->compteur4->stop();
+
+        ui->txtReponse1->setPlainText("");
+        ui->txtReponse2->setPlainText("");
+        ui->txtReponse3->setPlainText("");
+        ui->txtReponse4->setPlainText("");
 
      ui->btValider1->setEnabled(false);
      ui->btValider2->setEnabled(false);
@@ -289,16 +302,6 @@ void Fenetre:: Effacer(int a)
      ui->txtReponse2->setEnabled(false);
      ui->txtReponse3->setEnabled(false);
      ui->txtReponse4->setEnabled(false);
-
-    }
-
-
-
-
-    if(a!=1)
-    {
-
-
 
 
     ui->lbDelais1->setText("");
@@ -316,7 +319,7 @@ void Fenetre:: Effacer(int a)
     ui->lbDelais4->setText("");
     ui->lbCalcul4->setText("");
     ui->lbInfo4->setText("");
-    }
+
 
 
 
