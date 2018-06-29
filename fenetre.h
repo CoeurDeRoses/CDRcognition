@@ -2,9 +2,9 @@
 #define FENETRE_H
 #include <QTime>
 #include <QKeyEvent>
-
-
+#include <QWidget>
 #include <QDialog>
+
 
 namespace Ui {
 class Fenetre;
@@ -38,6 +38,7 @@ public slots:
       void Initial2();
       void Initial3();
       void Initial4();
+      //virtual void keyPressEvent(QKeyEvent * event);
 
 
 

@@ -4,6 +4,7 @@
 #include  <QTimer>
 #include <string>
 #include <cstdlib>
+#include <QValidator>
 
 
 
@@ -15,8 +16,12 @@ Fenetre::Fenetre(QWidget *parent) :
     ui(new Ui::Fenetre)
 {
     ui->setupUi(this);
+    QValidator *uniquementChiffre = new QIntValidator(0,1000,this);
 
-
+    ui->txtReponse1->setValidator(uniquementChiffre);
+    ui->txtReponse2->setValidator(uniquementChiffre);
+    ui->txtReponse3->setValidator(uniquementChiffre);
+    ui->txtReponse4->setValidator(uniquementChiffre);
 
     //Connexion des boutons aux méthodes
     connect(ui->btCommencer,SIGNAL(clicked()),this, SLOT(Commencer()));
@@ -31,6 +36,8 @@ Fenetre::Fenetre(QWidget *parent) :
 
 
 }
+
+
 
 //Initialisation des délais
 //Génération des nombres aléatoires
@@ -102,7 +109,7 @@ void Fenetre::Commencer()
 void Fenetre::Initial1()
 {
     //Préparation calcul 1
-    ui->txtReponse1->setPlainText("");// Vider la fenêtre après la réponse trouvé
+    ui->txtReponse1->setText("");// Vider la fenêtre après la réponse trouvé
                 //ou la réinitialisation de l'exercice
     this->operande1A = rand() % 16; // Dernier nombre exclusif, 15 ext le maximum
     this->operande1B = rand() % 16;
@@ -115,7 +122,7 @@ void Fenetre::Initial1()
 }
 void Fenetre::Initial2()
 {
-    ui->txtReponse2->setPlainText("");
+    ui->txtReponse2->setText("");
     //Préparation calcul 2
     this->operande2A = rand() % 16;
     this->operande2B = rand() % 16;
@@ -127,7 +134,7 @@ void Fenetre::Initial2()
 }
 void Fenetre::Initial3()
 {
-    ui->txtReponse3->setPlainText("");
+    ui->txtReponse3->setText("");
     //Préparation calcul 3
     this->operande3A = rand() % 16;
     this->operande4B = rand() % 16;
@@ -140,7 +147,7 @@ void Fenetre::Initial3()
 }
 void Fenetre::Initial4()
 {
-    ui->txtReponse4->setPlainText("");
+    ui->txtReponse4->setText("");
     //Préparation calcul 4
     this->operande4A = rand() % 16;
     this->operande4B = rand() % 16;
@@ -209,8 +216,7 @@ void Fenetre:: Verif1()
 {
 
         auto compar1= std::to_string(this->resultat1);
-        QString laReponse = ui->txtReponse1->toPlainText();
-        if(compar1.c_str() == laReponse)
+        if(compar1.c_str() == ui->txtReponse1->text())
         {
             this->nb1++;
             ui->lbInfo1->setText("Bonne réponse");
@@ -238,8 +244,7 @@ void Fenetre:: Verif1()
 void Fenetre:: Verif2()
 {
     auto compar2= std::to_string(this->resultat2);
-    QString laReponse2 = ui->txtReponse2->toPlainText();
-    if(compar2.c_str() == laReponse2)
+    if(compar2.c_str() == ui->txtReponse2->text())
     {
         this->nb2++;
         ui->lbInfo2->setText("Bonne réponse");
@@ -259,8 +264,7 @@ void Fenetre:: Verif2()
 void Fenetre:: Verif3()
 {
     auto compar3= std::to_string(this->resultat3);
-    QString laReponse3 = ui->txtReponse3->toPlainText();
-    if(compar3.c_str() == laReponse3)
+    if(compar3.c_str() == ui->txtReponse3->text())
     {
         this->nb3++;
         ui->lbInfo3->setText("Bonne réponse");
@@ -282,8 +286,7 @@ void Fenetre:: Verif3()
 void Fenetre:: Verif4()
 {
     auto compar4= std::to_string(this->resultat4);
-    QString laReponse4 = ui->txtReponse4->toPlainText();
-    if(compar4.c_str() == laReponse4)
+    if(compar4.c_str() == ui->txtReponse4->text())
     {
         this->nb4++;
         ui->lbInfo4->setText("Bonne réponse");
@@ -311,10 +314,10 @@ void Fenetre:: Effacer()
     this->compteur3->stop();
     this->compteur4->stop();
 
-        ui->txtReponse1->setPlainText("");
-        ui->txtReponse2->setPlainText("");
-        ui->txtReponse3->setPlainText("");
-        ui->txtReponse4->setPlainText("");
+        ui->txtReponse1->setText("");
+        ui->txtReponse2->setText("");
+        ui->txtReponse3->setText("");
+        ui->txtReponse4->setText("");
 
      ui->btValider1->setEnabled(false);
      ui->btValider2->setEnabled(false);

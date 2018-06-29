@@ -47,22 +47,6 @@ qui commencera une seconde plutôt que celui d'avant:&lt;/body&gt;&lt;/html&gt;<
     <string/>
    </property>
   </widget>
-  <widget class="QTextBrowser" name="txtReponse1">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>290</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="readOnly">
-    <bool>false</bool>
-   </property>
-  </widget>
   <widget class="QLabel" name="lbDelais1">
    <property name="geometry">
     <rect>
@@ -153,22 +137,6 @@ qui commencera une seconde plutôt que celui d'avant:&lt;/body&gt;&lt;/html&gt;<
     <string/>
    </property>
   </widget>
-  <widget class="QTextBrowser" name="txtReponse2">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="geometry">
-    <rect>
-     <x>340</x>
-     <y>290</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="readOnly">
-    <bool>false</bool>
-   </property>
-  </widget>
   <widget class="QLabel" name="lbCalcul2">
    <property name="geometry">
     <rect>
@@ -201,22 +169,6 @@ qui commencera une seconde plutôt que celui d'avant:&lt;/body&gt;&lt;/html&gt;<
    </property>
    <property name="text">
     <string>Valider</string>
-   </property>
-  </widget>
-  <widget class="QTextBrowser" name="txtReponse3">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>430</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="readOnly">
-    <bool>false</bool>
    </property>
   </widget>
   <widget class="QLabel" name="lbDelais3">
@@ -255,22 +207,6 @@ qui commencera une seconde plutôt que celui d'avant:&lt;/body&gt;&lt;/html&gt;<
    </property>
    <property name="text">
     <string/>
-   </property>
-  </widget>
-  <widget class="QTextBrowser" name="txtReponse4">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="geometry">
-    <rect>
-     <x>340</x>
-     <y>430</y>
-     <width>71</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="readOnly">
-    <bool>false</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="btValider4">
@@ -444,7 +380,7 @@ qui commencera une seconde plutôt que celui d'avant:&lt;/body&gt;&lt;/html&gt;<
     </rect>
    </property>
    <property name="text">
-    <string>N'appuyez pas sur la touche entrée le résultat ne sera pas pris en compte:</string>
+    <string>Appuyez sur entrée pour confirmer votre réponse:</string>
    </property>
   </widget>
   <widget class="QLCDNumber" name="lcdNumber">
@@ -922,6 +858,61 @@ qui commencera une seconde plutôt que celui d'avant:&lt;/body&gt;&lt;/html&gt;<
    </property>
    <property name="text">
     <string>secondes</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="txtReponse1">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>290</y>
+     <width>91</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="inputMethodHints">
+    <set>Qt::ImhNone</set>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="txtReponse2">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>290</y>
+     <width>91</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="txtReponse3">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>430</y>
+     <width>91</width>
+     <height>31</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="txtReponse4">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>430</y>
+     <width>91</width>
+     <height>31</height>
+    </rect>
    </property>
   </widget>
  </widget>
