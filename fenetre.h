@@ -1,6 +1,8 @@
 #ifndef FENETRE_H
 #define FENETRE_H
 #include <QTime>
+#include <QKeyEvent>
+
 
 #include <QDialog>
 
@@ -15,6 +17,7 @@ class Fenetre : public QDialog
 public:
     explicit Fenetre(QWidget *parent = 0);
     ~Fenetre();
+
 public slots:
         //Méthode pour démarrer les compter à rebour
       void Commencer();
@@ -41,6 +44,9 @@ public slots:
 private:
       //Variable pour les 4 compteurs
      int secondes_restantes1;
+
+
+
     QTimer* compteur1;
 
     int secondes_restantes2;
@@ -51,6 +57,10 @@ private:
 
     int secondes_restantes4;
     QTimer* compteur4;
+
+        //Compter l'endurance mentale
+    int secondes_endurance;
+    QTimer* compteur_endurance;
 
 
     // pour connaître le nombre de calcul trouvé.

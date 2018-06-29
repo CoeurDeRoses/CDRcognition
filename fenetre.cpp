@@ -8,11 +8,15 @@
 
 
 
+
+
 Fenetre::Fenetre(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Fenetre)
 {
     ui->setupUi(this);
+
+
 
     //Connexion des boutons aux méthodes
     connect(ui->btCommencer,SIGNAL(clicked()),this, SLOT(Commencer()));
@@ -22,6 +26,10 @@ Fenetre::Fenetre(QWidget *parent) :
     connect(ui->btValider2,SIGNAL(clicked()),this, SLOT(Verif2()));
     connect(ui->btValider3,SIGNAL(clicked()),this, SLOT(Verif3()));
     connect(ui->btValider4,SIGNAL(clicked()),this, SLOT(Verif4()));
+
+
+
+
 }
 
 //Initialisation des délais
@@ -44,23 +52,29 @@ void Fenetre::Commencer()
     ui->txtReponse3->setEnabled(true);
     ui->txtReponse4->setEnabled(true);
 
-    //Mise à zéro des nombres de secondes
+    //Mise à 60 des nombres de secondes
     this->secondes_restantes1 = 60;
     this->secondes_restantes2 = 60;
     this->secondes_restantes3 = 60;
     this->secondes_restantes4 = 60;
+
+    //Excepté pour l'endurance qui commence à 0
+    this->secondes_endurance = 0;
 
     //Création des compteurs QTimer
     this->compteur1 = new QTimer(this);
     this->compteur2 = new QTimer(this);
     this->compteur3 = new QTimer(this);
     this->compteur4 = new QTimer(this);
+    this->compteur_endurance = new QTimer(this);
 
     //Intervalle de 1000 ms pour chaque compteur
     this->compteur1->setInterval(1000);
     this->compteur2->setInterval(1000);
     this->compteur3->setInterval(1000);
     this->compteur4->setInterval(1000);
+
+    this->compteur_endurance->setInterval(1000);
     //Execution de la méthode de mise à jour des secondes à chaque fin d'intervalle
     connect(this->compteur1, SIGNAL(timeout()), this, SLOT(SecondesActuelles()));
     //appeler un seul compteur est suffisant sinon, il y'aura 4 décrémentations
@@ -69,11 +83,16 @@ void Fenetre::Commencer()
     this->compteur1->start(); this->compteur2->start();
     this->compteur3->start(); this->compteur4->start();
 
+    this->compteur_endurance->start();
+
+
     srand(time(NULL));// Pour garantir qu'on aura pas tout le temps les mêmes opérandes
     this->Initial1();
     this->Initial2();
     this->Initial3();
     this->Initial4();
+
+
 
 
 
@@ -85,8 +104,8 @@ void Fenetre::Initial1()
     //Préparation calcul 1
     ui->txtReponse1->setPlainText("");// Vider la fenêtre après la réponse trouvé
                 //ou la réinitialisation de l'exercice
-    this->operande1A = rand() % 13; // Dernier nombre exclusif, 12 ext le maximum
-    this->operande1B = rand() % 13;
+    this->operande1A = rand() % 16; // Dernier nombre exclusif, 15 ext le maximum
+    this->operande1B = rand() % 16;
 
     this->resultat1 = this->operande1A * this->operande1B;
 
@@ -98,8 +117,8 @@ void Fenetre::Initial2()
 {
     ui->txtReponse2->setPlainText("");
     //Préparation calcul 2
-    this->operande2A = rand() % 13;
-    this->operande2B = rand() % 13;
+    this->operande2A = rand() % 16;
+    this->operande2B = rand() % 16;
 
     this->resultat2 = this->operande2A * this->operande2B;
 
@@ -110,8 +129,8 @@ void Fenetre::Initial3()
 {
     ui->txtReponse3->setPlainText("");
     //Préparation calcul 3
-    this->operande3A = rand() % 13; // Dernier nombre exclusif, 12 est le maximum
-    this->operande4B = rand() % 13;
+    this->operande3A = rand() % 16;
+    this->operande4B = rand() % 16;
 
     this->resultat3 = this->operande3A * this->operande3B;
 
@@ -123,8 +142,8 @@ void Fenetre::Initial4()
 {
     ui->txtReponse4->setPlainText("");
     //Préparation calcul 4
-    this->operande4A = rand() % 13; // Dernier nombre exclusif, 12 est le maximum
-    this->operande4B = rand() % 13;
+    this->operande4A = rand() % 16;
+    this->operande4B = rand() % 16;
 
     this->resultat4 = this->operande4A * this->operande4B;
 
@@ -148,6 +167,9 @@ void Fenetre::SecondesActuelles()
      secondes_restantes2--;
       secondes_restantes3--;
        secondes_restantes4--;
+        secondes_endurance++;
+
+        ui->lcdNumber->display(secondes_endurance);
 
     auto delais1 = std::to_string(secondes_restantes1);
     auto delais2 = std::to_string(secondes_restantes2);
@@ -165,6 +187,7 @@ void Fenetre::SecondesActuelles()
         this->compteur2->stop();
         this->compteur3->stop();
         this->compteur4->stop();
+        this->compteur_endurance->stop();
 
         this->Effacer();
 
